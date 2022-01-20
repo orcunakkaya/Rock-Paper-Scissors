@@ -1,0 +1,478 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Inter:wght@200&family=Poppins:wght@400;500;600&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:root{
+  --background-color: linear-gradient(to right, hsl(237, 49%, 15%),hsl(214, 47%, 23%),hsl(237, 49%, 15%));
+  --header-gap: 400px;
+  --button-width: 180px;
+  --button-height: 180px;
+}
+
+body{
+  background-image: var(--background-color);
+  font-family: Barlow Semi Condensed;
+  color: #fff;
+}
+
+.App{
+  padding-top: 40px;
+}
+
+/*    HEADER    */
+
+#header{
+  width: fit-content;
+  display: flex;
+  column-gap: var(--header-gap);
+  margin-left: auto;
+  margin-right: auto;
+  outline: 2px solid hsl(217, 16%, 45%);
+  padding: 14px 16px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.score{
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 30px;
+  border-radius: 8px;
+  text-align: center;
+
+  &__text{
+    color: hsl(229, 64%, 46%);
+  }
+
+  &__number{
+    color: hsl(229, 25%, 31%);
+    font-size: 56px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width:876px) {
+  :root{
+    --header-gap: 280px;
+  }
+  #header{
+    h1{
+      font-size: 24px;
+    }
+  }
+  .score{
+    &__text{
+      font-size: 14px;
+    }
+    &__number{
+      font-size: 44px;
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  :root{
+    --header-gap: 180px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  :root{
+    --header-gap: 100px;
+  }
+  #header{
+    h1{
+      font-size: 18px;
+    }
+  }
+  
+  .score{
+    padding: 10px 20px;
+    &__text{
+      font-size: 12px;
+    }
+    &__number{
+      font-size: 40px;
+    }
+  }
+}
+
+/*    RULES     */
+
+#rules{
+  position: absolute;
+  right: 2%;
+  bottom: 5%;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #fff;
+  outline: 1px solid #fff;
+  border-radius: 6px;
+  padding: 8px 30px;
+  letter-spacing: 1px;
+  transition: all .3s linear;
+  &:hover{
+    color: hsl(214, 47%, 23%);
+    background-color: #fff;
+    transition: all .3s linear;
+  }
+}
+
+.model{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .3);
+  display: grid;
+  place-items: center;
+
+  &__content{
+    position: relative;
+    background-color: #fff;
+    width: fit-content;
+    color: hsl(229, 25%, 31%);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    .close-button{
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    img{
+      width: 18px;
+      height: 18px;
+      fill: green;
+    }
+  }
+
+  &__rules-img{
+    width: 280px;
+    margin: 20px 15px;
+  }
+}
+
+@media screen and (max-width:500px) {
+  #rules{
+    right: calc(50% - 55px);
+  }
+  .model{
+    &__rules-img{
+      width: 180px;
+    }
+    &__header{
+      h2{
+        font-size: 20px;
+      }
+      img{
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+/*    CHOISE    */
+.bg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+}
+
+.choise button:active{
+  transform: scale(.8);
+  
+}
+.choise{
+  button{
+    background-color: transparent;
+    border-radius: 50%;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: #fff;
+    position: absolute;
+    cursor: pointer;
+
+  }
+  .paper-button{
+    border: 20px solid hsl(230, 89%, 62%);
+    // right: calc(100% / 1.9);
+    right: calc(50% + 50px);
+    // top: 36%;
+    margin-top: -350px;
+  }
+  .rock-button{
+    border: 20px solid hsl(349, 71%, 52%);
+    right: calc(50% - 85px);
+    margin-top: -120px;
+    &:active{
+      scale: 0.1;
+      
+    }
+  }
+  .scissors-button{
+    border: 20px solid hsl(39, 89%, 49%);
+    // left: calc(100% / 2);
+    right: calc(50% - 225px);
+    margin-top: -350px;
+    &:active{
+      scale: 0.9;
+    }
+  }
+}
+
+
+@media screen and (max-width: 876px) {
+  .bg{
+    width: 270px;
+  }
+  .choise{
+    button{
+      width: 150px;
+      height: 150px;
+    }
+    .paper-button, .rock-button, .scissors-button{
+      border-width: 14px;
+      img{
+        width: 40px;
+      }
+    }
+    .paper-button{
+      right: calc(50% + 50px);
+      margin-top: -310px;
+    }
+    .rock-button{
+      margin-top: -120px;
+      right: calc(50% - 75px);
+    }
+    .scissors-button{
+      margin-top: -310px;
+      right: calc(50% - 195px);
+    }
+  }
+}
+
+@media screen and (max-width: 440px){
+  .bg{
+    width: 200px;
+  }
+  .choise{
+    button{
+      width: 110px;
+      height: 110px;
+    }
+    .paper-button, .rock-button, .scissors-button{
+      border-width: 10px;
+      img{
+        width: 30px;
+      }
+    }
+    .paper-button{
+      right: calc(50% + 20px);
+      margin-top: -230px;
+    }
+    .rock-button{
+      margin-top: -85px;
+      right: calc(50% - 55px);
+    }
+    .scissors-button{
+      margin-top: -230px;
+      right: calc(50% - 130px);
+    }
+  }
+}
+
+/*    RESULT    */
+
+#result{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  column-gap: 5%;
+  text-align: center;
+}
+
+.picked-text{
+  margin-bottom: 3rem;
+}
+
+.picked-img{
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.house__counter{
+  background-color: rgba(0, 0, 0, .3);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+}
+.picked-paper{
+  border: 20px solid hsl(230, 89%, 62%);
+}
+.picked-rock{
+  border: 20px solid hsl(349, 71%, 52%);
+}
+.picked-scissors{
+  border: 20px solid hsl(39, 89%, 49%);
+}
+
+.play-again-container{
+  align-self: center;
+  div{
+    font-size: 54px;
+  }
+  button{
+    margin-top: 1rem;
+    padding: 10px 30px;
+    border-radius: 8px;
+    border: none;
+    color: hsl(349, 70%, 56%);
+    font-weight: 700;
+    cursor: pointer;
+    &:active{
+      transform: scale(.8);
+    }
+  }
+}
+.won{
+  box-shadow: 0 0 0 30px rgba(255,255,255,.04), 0 0 0 60px rgba(255,255,255,.04), 0 0 0 90px rgba(255,255,255,.02);
+}
+
+
+@media screen and (max-width: 876px) {
+  #result{
+    column-gap: 3%;
+  }
+  .picked-img{
+    width: 160px;
+    height: 160px;
+    img{
+      width: 36px;
+    }
+  }
+  .house__counter{
+    width: 160px;
+    height: 160px;
+    font-size: 3rem;
+  }
+  .play-again-container{
+    div{
+      font-size: 30px;
+    }
+    button{
+      padding: 8px 22px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .picked-text{
+    font-size: 14px;
+  }
+  .picked-img{
+    width: 120px;
+    height: 120px;
+    img{
+      width: 30px;
+    }
+  }
+  .house__counter{
+    width: 120px;
+    height: 120px;
+    font-size: 3rem;
+  }
+  .play-again-container{
+    div{
+      font-size: 24px;
+    }
+    button{
+      padding: 6px 18px;
+      font-size: 10px;
+    }
+  }
+  .picked-paper{
+    border: 12px solid hsl(230, 89%, 62%);
+  }
+  .picked-rock{
+    border: 12px solid hsl(349, 71%, 52%);
+  }
+  .picked-scissors{
+    border: 12px solid hsl(39, 89%, 49%);
+  }
+  .won{
+    box-shadow: 0 0 0 20px rgba(255,255,255,.04), 0 0 0 40px rgba(255,255,255,.04), 0 0 0 60px rgba(255,255,255,.02);
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .picked-text{
+    font-size: 12px;
+    margin-bottom: 35px;
+    margin-top: 25px;
+  }
+  .picked-img{
+    width: 120px;
+    height: 120px;
+    img{
+      width: 30px;
+    }
+  }
+  .house__counter{
+    width: 120px;
+    height: 120px;
+    font-size: 3rem;
+  }
+  .play-again-container{
+    position: absolute;
+    top: 25%;
+    div{
+      font-size: 18px;
+    }
+    button{
+      padding: 6px 18px;
+      font-size: 10px;
+    }
+  }
+  .picked-paper{
+    border: 12px solid hsl(230, 89%, 62%);
+  }
+  .picked-rock{
+    border: 12px solid hsl(349, 71%, 52%);
+  }
+  .picked-scissors{
+    border: 12px solid hsl(39, 89%, 49%);
+  }
+  .won{
+    box-shadow: 0 0 0 20px rgba(255,255,255,.04), 0 0 0 40px rgba(255,255,255,.04), 0 0 0 60px rgba(255,255,255,.02);
+  }
+  .house__container, .you__picked{
+    margin-top: 30px;
+  }
+}
