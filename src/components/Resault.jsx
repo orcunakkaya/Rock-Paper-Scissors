@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useSelector } from 'react-redux';
 import { isMatch, resetGame } from '../redux/gameSlice.js';
 import { useDispatch } from 'react-redux'
+
 function Resault() {
     let dispatch = useDispatch();
     const choise = useSelector((state) => state.game.userChoise)
@@ -9,6 +10,12 @@ function Resault() {
     const match = useSelector((state) => state.game.match);
     const color = useSelector((state) => state.game.buttonColor)
     const [counter, setCounter] = useState(3);
+
+    const handleMatch = useCallback(() => {
+        if(counter === 1){
+            dispatch(isMatch());
+        }
+    }, [counter, dispatch])
 
     useEffect(() => {
         const timer = counter > 0 &&
@@ -18,13 +25,9 @@ function Resault() {
             }, 1000)
         
         return ()=> clearInterval(timer);
-    }, [counter])
+    }, [counter, handleMatch])
 
-    const handleMatch = () => {
-        if(counter === 1){
-            dispatch(isMatch());
-        }
-    }
+    
 
     const handleClick = () => {
         dispatch(resetGame());

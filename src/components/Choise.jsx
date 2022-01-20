@@ -4,7 +4,7 @@ import paper from '../Images/icon-paper.svg';
 import rock from '../Images/icon-rock.svg';
 import scissors from '../Images/icon-scissors.svg';
 import { useDispatch } from 'react-redux';
-import { setChoise, setRandomChoise, isMatch } from '../redux/gameSlice.js';
+import { setChoise, setRandomChoise } from '../redux/gameSlice.js';
 
 function Choise() {
     let dispatch = useDispatch();
